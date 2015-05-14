@@ -62,7 +62,7 @@ class ArrowControlsViewController: UIViewController {
     
     func startTimer()
     {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("timerTick"), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.2, target: self, selector: Selector("timerTick"), userInfo: nil, repeats: true)
     }
     
     override func viewDidLoad() {
