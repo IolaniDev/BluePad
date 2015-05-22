@@ -37,7 +37,7 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @IBAction func RefreshButtonPressed(sender: AnyObject) {
-        refreshVisuals()
+        refreshData()
     }
     
     func startTimer()
@@ -48,6 +48,12 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     func refreshWithWait()
     {
         waitTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("refreshVisuals"), userInfo: nil, repeats: false)
+    }
+    
+    func refreshData()
+    {
+        CentralManager.BLEPeripheralList = []
+        refreshWithWait()
     }
     
     func refreshVisuals()
