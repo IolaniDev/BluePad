@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E17e" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="49e-Tb-3d3">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -249,24 +249,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDH-SF-8Hl">
-                                <rect key="frame" x="265" y="285" width="71" height="30"/>
-                                <state key="normal" title="Go Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No active connection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZG-QY-D8b">
                                 <rect key="frame" x="189" y="70" width="222" height="29"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Go!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hv9-0R-H2j">
+                                <rect key="frame" x="280" y="284" width="41" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EDH-SF-8Hl">
+                                <rect key="frame" x="172" y="172" width="256" height="256"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="256" id="Bnu-Ii-0P0"/>
+                                    <constraint firstAttribute="width" constant="256" id="Cb1-FE-oOb"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="TPj-b2-y1u"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="bFO-w6-Vx8"/>
+                                </constraints>
+                                <state key="normal" title="Go Button" image="circle.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="TPj-b2-y1u"/>
+                                        <exclude reference="bFO-w6-Vx8"/>
+                                    </mask>
+                                </variation>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="EDH-SF-8Hl" firstAttribute="centerY" secondItem="Hv9-0R-H2j" secondAttribute="centerY" constant="0.5" id="K1R-rf-lIV"/>
                             <constraint firstAttribute="centerY" secondItem="EDH-SF-8Hl" secondAttribute="centerY" id="K8Q-wI-NhX"/>
                             <constraint firstAttribute="centerX" secondItem="XZG-QY-D8b" secondAttribute="centerX" id="O3t-Lc-YRx"/>
                             <constraint firstItem="XZG-QY-D8b" firstAttribute="top" secondItem="vtB-FI-c5q" secondAttribute="bottom" constant="50" id="jGm-F2-5vc"/>
+                            <constraint firstItem="EDH-SF-8Hl" firstAttribute="centerX" secondItem="Hv9-0R-H2j" secondAttribute="centerX" id="mcQ-Tt-sjL"/>
                             <constraint firstAttribute="centerX" secondItem="EDH-SF-8Hl" secondAttribute="centerX" id="rfT-ml-p7P"/>
                         </constraints>
                     </view>
@@ -303,6 +323,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="circle.png" width="256" height="256"/>
         <image name="first" width="30" height="30"/>
         <image name="second" width="30" height="30"/>
     </resources>

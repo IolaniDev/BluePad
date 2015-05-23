@@ -26,6 +26,7 @@
 		3FCB65A51AEF04700027CF3C /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCB65A41AEF04700027CF3C /* AnalogStick.swift */; };
 		3FED68921AE8A3DC00937D21 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FED68911AE8A3DC00937D21 /* BLEManager.swift */; };
 		3FED68961AE9EDD800937D21 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FED68951AE9EDD800937D21 /* BLEService.swift */; };
+		454312851B10143900436D39 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 454312841B10143900436D39 /* circle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		3FCB65A41AEF04700027CF3C /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalogStick.swift; path = BluePad/AnalogStick.swift; sourceTree = "<group>"; };
 		3FED68911AE8A3DC00937D21 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		3FED68951AE9EDD800937D21 /* BLEService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLEService.swift; path = ../BLEService.swift; sourceTree = "<group>"; };
+		454312841B10143900436D39 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				3F9F28B91AE8A07F00FEB40D /* ArrowControlsViewController.swift */,
 				3F378A1A1AF45CFD001EBB9F /* GyroControlsViewController.swift */,
 				3F9F28BB1AE8A07F00FEB40D /* Main.storyboard */,
+				454312841B10143900436D39 /* circle.png */,
 				3F600FC51AEED12C0020DFD5 /* arrow_down.png */,
 				3F600FC61AEED12C0020DFD5 /* arrow_left.png */,
 				3F600FC71AEED12C0020DFD5 /* arrow_up.png */,
@@ -235,6 +238,7 @@
 				3F600FCA1AEED12C0020DFD5 /* arrow_left.png in Resources */,
 				3F9F28BD1AE8A07F00FEB40D /* Main.storyboard in Resources */,
 				3F600FCB1AEED12C0020DFD5 /* arrow_up.png in Resources */,
+				454312851B10143900436D39 /* circle.png in Resources */,
 				3F600FCC1AEED12C0020DFD5 /* arrow_right.png in Resources */,
 				3F9F28C21AE8A07F00FEB40D /* LaunchScreen.xib in Resources */,
 				3FC9C9D71AF2DE5E00432704 /* arrow_left_red.jpg in Resources */,
