@@ -33,7 +33,7 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func DisconnectButtonPressed(sender: AnyObject) {
         CentralManager.disconnect()
-        refreshWithWait()
+        refreshVisuals()
     }
     
     @IBAction func RefreshButtonPressed(sender: AnyObject) {
