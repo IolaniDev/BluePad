@@ -33,11 +33,11 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBAction func DisconnectButtonPressed(sender: AnyObject) {
         CentralManager.disconnect()
-        refreshVisuals()
+        refreshWithWait()
     }
     
     @IBAction func RefreshButtonPressed(sender: AnyObject) {
-        refreshData()
+        refreshVisuals()
     }
     
     func startTimer()
