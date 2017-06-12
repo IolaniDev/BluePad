@@ -59,7 +59,7 @@ class GyroControlsViewController: UIViewController {
     
     func startTimer()
     {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: Selector("refreshVisuals"), userInfo: nil, repeats: true)
+        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(GyroControlsViewController.refreshVisuals), userInfo: nil, repeats: true)
     }
     
     override func viewDidLoad() {
@@ -68,15 +68,11 @@ class GyroControlsViewController: UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         motionManager.deviceMotionUpdateInterval = 0.05
-        motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) {
-            [weak self] (data: CMDeviceMotion!, error: NSError!) in
-            
-            //Right turn is negative around y axis, forward is negative around x axis
-            let tiltHorizontal = -1 * data.attitude.pitch //Positive is right turn
-            let tiltVertical   = -1 * data.attitude.roll //Positive is forward
-            
-            self!.processMovement(self!.radiansToDegrees(tiltHorizontal), y: self!.radiansToDegrees(tiltVertical))
-            
+        motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) { (data: CMDeviceMotion?, error: NSError?) in
+            // Right turn is negative around y axis, forward is negative around x axis
+            let tiltHorizontal = -1 * data!.attitude.pitch // Positive is right turn
+            let tiltVertical   = -1 * data!.attitude.roll // Positive is forward
+            self.processMovement(self.radiansToDegrees(tiltHorizontal), y: self.radiansToDegrees(tiltVertical))
         }
         
         startTimer()

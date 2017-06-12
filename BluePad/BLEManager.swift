@@ -39,8 +39,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     }
     
     func disconnect() {
-        if let peripheral = connectedPeripheral {
-            BLECentralManager?.cancelPeripheralConnection(connectedPeripheral)
+        if connectedPeripheral != nil {
+            BLECentralManager?.cancelPeripheralConnection(connectedPeripheral!)
         }
         connectedPeripheral = nil
         connectedService = nil
@@ -98,10 +98,6 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     // Connection //
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
-        
-        if (peripheral == nil) {
-            return
-        }
         
         //What do we do when we connect to a peripheral?
         stopScanning()

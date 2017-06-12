@@ -42,12 +42,12 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     
     func startTimer()
     {
-        refreshTimer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: Selector("refreshVisuals"), userInfo: nil, repeats: true)
+        refreshTimer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: #selector(ConnectionsViewController.refreshVisuals), userInfo: nil, repeats: true)
     }
     
     func refreshWithWait()
     {
-        waitTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: Selector("refreshVisuals"), userInfo: nil, repeats: false)
+        waitTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(ConnectionsViewController.refreshVisuals), userInfo: nil, repeats: false)
     }
     
     func refreshData()
@@ -94,7 +94,7 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = self.BLEDevicesTableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        let cell : UITableViewCell = self.BLEDevicesTableView.dequeueReusableCellWithIdentifier("cell")!
         
         //cell.textLabel?.text = "\(CentralManager.BLEPeripheralList[indexPath.row].name) \(CentralManager.BLEPeripheralList[indexPath.row].RSSI)"
         

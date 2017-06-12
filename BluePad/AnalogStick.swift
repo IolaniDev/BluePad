@@ -41,7 +41,7 @@ class AnalogStick: SKNode {
             velocityLoop?.invalidate()
             velocityLoop = nil
             if delagate != nil {
-                velocityLoop = CADisplayLink(target: self, selector: Selector("update"))
+                velocityLoop = CADisplayLink(target: self, selector: #selector(AnalogStick.update))
                 velocityLoop?.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
             }
         }

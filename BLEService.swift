@@ -48,14 +48,14 @@ class BLEService: NSObject, CBPeripheralDelegate {
             return
         }
         
-        if ((peripheral.services == nil) || (peripheral.services.count == 0)) {
+        if ((peripheral.services == nil) || (peripheral.services!.count == 0)) {
             // No Services
             return
         }
         
-        for service in peripheral.services {
+        for service in peripheral.services! {
             if service.UUID == BLEServiceUUID {
-                peripheral.discoverCharacteristics(uuidsForBTService, forService: service as! CBService)
+                peripheral.discoverCharacteristics(uuidsForBTService, forService: service )
             }
         }
     }
@@ -70,10 +70,10 @@ class BLEService: NSObject, CBPeripheralDelegate {
             return
         }
         
-        for characteristic in service.characteristics {
+        for characteristic in service.characteristics! {
             if characteristic.UUID == PositionCharUUID {
-                self.positionCharacteristic = (characteristic as! CBCharacteristic)
-                peripheral.setNotifyValue(true, forCharacteristic: characteristic as! CBCharacteristic)
+                self.positionCharacteristic = (characteristic)
+                peripheral.setNotifyValue(true, forCharacteristic: characteristic)
                 
                 // Send notification that Bluetooth is connected and all required characteristics are discovered
                 self.sendBTServiceNotificationWithIsBluetoothConnected(true)
@@ -92,7 +92,7 @@ class BLEService: NSObject, CBPeripheralDelegate {
         // Need a mutable var to pass to writeValue function
         var positionValue = position
         let data = NSData(bytes: &positionValue, length: sizeof(UInt8))
-        self.BLEPeripheral?.writeValue(data, forCharacteristic: self.positionCharacteristic, type: CBCharacteristicWriteType.WithoutResponse)
+        self.BLEPeripheral?.writeValue(data, forCharacteristic: self.positionCharacteristic!, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
     func writeGyro(gyroString: String) {
@@ -102,9 +102,9 @@ class BLEService: NSObject, CBPeripheralDelegate {
         }
         
         // Need a mutable var to pass to writeValue function
-        var value = gyroString
+        _ = gyroString
         let data = gyroString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        self.BLEPeripheral?.writeValue(data, forCharacteristic: self.positionCharacteristic, type: CBCharacteristicWriteType.WithoutResponse)
+        self.BLEPeripheral?.writeValue(data!, forCharacteristic: self.positionCharacteristic!, type: CBCharacteristicWriteType.WithoutResponse)
     }
     
     func sendBTServiceNotificationWithIsBluetoothConnected(isBluetoothConnected: Bool) {
