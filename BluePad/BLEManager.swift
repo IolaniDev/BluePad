@@ -85,19 +85,19 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     }
     
     // Discovery //
-    func centralManager(central: CBCentralManager!, didDiscoverPeripheral peripheral: CBPeripheral!, advertisementData: [NSObject : AnyObject]!, RSSI: NSNumber!) {
+    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
         
         //Checking if it's already connected is untested and experimental; may make stuff break!
         if (!isPeripheralInList(peripheral) && peripheral.state != CBPeripheralState.Connected) {
             BLEPeripheralList.append(peripheral)
-            println("Found a peripheral named \(peripheral.name)")
+            print("Found a peripheral named \(peripheral.name)")
             //peripheral.readRSSI()
             //Apple's RSSI system doesn't work! D:
         }
     }
     
     // Connection //
-    func centralManager(central: CBCentralManager!, didConnectPeripheral peripheral: CBPeripheral!) {
+    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         
         if (peripheral == nil) {
             return
@@ -111,18 +111,18 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    func centralManager(central: CBCentralManager!, didDisconnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         //What do we do when we disconnect from a peripheral?
         reset()
         startScanning()
     }
     
-    func centralManager(central: CBCentralManager!, didFailToConnectPeripheral peripheral: CBPeripheral!, error: NSError!) {
+    func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
         //What do we do when we fail to connect to a peripheral?
     }
     
     // Central Manager states //
-    func centralManagerDidUpdateState(central: CBCentralManager!) {
+    func centralManagerDidUpdateState(central: CBCentralManager) {
         //How do we handle various central manager states?
         if let manager = BLECentralManager {
             switch (manager.state) {

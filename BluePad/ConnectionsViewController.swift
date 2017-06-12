@@ -94,7 +94,7 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell : UITableViewCell = self.BLEDevicesTableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
+        let cell : UITableViewCell = self.BLEDevicesTableView.dequeueReusableCellWithIdentifier("cell") as! UITableViewCell
         
         //cell.textLabel?.text = "\(CentralManager.BLEPeripheralList[indexPath.row].name) \(CentralManager.BLEPeripheralList[indexPath.row].RSSI)"
         

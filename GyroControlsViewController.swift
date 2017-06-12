@@ -43,7 +43,7 @@ class GyroControlsViewController: UIViewController {
             //service.writePosition(Character("C"))
         }
         
-        println(toWrite);
+        print(toWrite);
         
     }
     

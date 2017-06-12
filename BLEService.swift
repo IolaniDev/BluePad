@@ -36,7 +36,7 @@ class BLEService: NSObject, CBPeripheralDelegate {
         self.BLEPeripheral?.discoverServices([BLEServiceUUID])
     }
     
-    func peripheral(peripheral: CBPeripheral!, didDiscoverServices error: NSError!) {
+    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
         let uuidsForBTService: [CBUUID] = [PositionCharUUID]
         
         if (peripheral != self.BLEPeripheral) {
@@ -60,7 +60,7 @@ class BLEService: NSObject, CBPeripheralDelegate {
         }
     }
     
-    func peripheral(peripheral: CBPeripheral!, didDiscoverCharacteristicsForService service: CBService!, error: NSError!) {
+    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
         if (peripheral != self.BLEPeripheral) {
             // Wrong Peripheral
             return
