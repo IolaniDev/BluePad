@@ -11,7 +11,7 @@ import CoreBluetooth
 
 class ArrowControlsViewController: UIViewController {
     
-    var timer: NSTimer? = nil
+    var timer: Timer? = nil
     
     @IBOutlet weak var UpArrowButton: UIButton!
     
@@ -26,16 +26,16 @@ class ArrowControlsViewController: UIViewController {
     @IBOutlet weak var CurrentConnectionLabel: UILabel!
     
     func processDirection() {
-        if UpArrowButton.state == .Highlighted {
+        if UpArrowButton.state == .highlighted {
             CurrentDirectionLabel.text = "Up"
             sendDirection(Character("U"))
-        } else if DownArrowButton.state == .Highlighted {
+        } else if DownArrowButton.state == .highlighted {
             CurrentDirectionLabel.text = "Down"
             sendDirection(Character("D"))
-        } else if LeftArrowButton.state == .Highlighted {
+        } else if LeftArrowButton.state == .highlighted {
             CurrentDirectionLabel.text = "Left"
             sendDirection(Character("L"))
-        } else if RightArrowButton.state == .Highlighted {
+        } else if RightArrowButton.state == .highlighted {
             CurrentDirectionLabel.text = "Right"
             sendDirection(Character("R"))
         } else {
@@ -52,8 +52,8 @@ class ArrowControlsViewController: UIViewController {
     func refreshVisuals()
     {
         if let peripheral = CentralManager.connectedPeripheral {
-            if peripheral.state == CBPeripheralState.Connected {
-                CurrentConnectionLabel.text = "Currently connected to: \(peripheral.name)"
+            if peripheral.state == CBPeripheralState.connected {
+                CurrentConnectionLabel.text = "Currently connected to: \(String(describing: peripheral.name))"
                 return
             }
         }
@@ -62,7 +62,7 @@ class ArrowControlsViewController: UIViewController {
     
     func startTimer()
     {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(ArrowControlsViewController.timerTick), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(ArrowControlsViewController.timerTick), userInfo: nil, repeats: true)
     }
     
     override func viewDidLoad() {
@@ -70,24 +70,24 @@ class ArrowControlsViewController: UIViewController {
         
         CurrentDirectionLabel.adjustsFontSizeToFitWidth = true
         
-        UpArrowButton.setImage(UIImage(named: "arrow_up"), forState: .Normal)
-        DownArrowButton.setImage(UIImage(named: "arrow_down"), forState: .Normal)
-        LeftArrowButton.setImage(UIImage(named: "arrow_left"), forState: .Normal)
-        RightArrowButton.setImage(UIImage(named: "arrow_right"), forState: .Normal)
+        UpArrowButton.setImage(UIImage(named: "arrow_up"), for: UIControlState())
+        DownArrowButton.setImage(UIImage(named: "arrow_down"), for: UIControlState())
+        LeftArrowButton.setImage(UIImage(named: "arrow_left"), for: UIControlState())
+        RightArrowButton.setImage(UIImage(named: "arrow_right"), for: UIControlState())
         
-        UpArrowButton.setImage(UIImage(named: "arrow_up_red.jpg"), forState: .Highlighted)
-        DownArrowButton.setImage(UIImage(named: "arrow_down_red.jpg"), forState: .Highlighted)
-        LeftArrowButton.setImage(UIImage(named: "arrow_left_red.jpg"), forState: .Highlighted)
-        RightArrowButton.setImage(UIImage(named: "arrow_right_red.jpg"), forState: .Highlighted)
+        UpArrowButton.setImage(UIImage(named: "arrow_up_red.jpg"), for: .highlighted)
+        DownArrowButton.setImage(UIImage(named: "arrow_down_red.jpg"), for: .highlighted)
+        LeftArrowButton.setImage(UIImage(named: "arrow_left_red.jpg"), for: .highlighted)
+        RightArrowButton.setImage(UIImage(named: "arrow_right_red.jpg"), for: .highlighted)
         
         CurrentConnectionLabel.adjustsFontSizeToFitWidth = true
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         startTimer()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         timer?.invalidate()
     }
     
@@ -96,7 +96,7 @@ class ArrowControlsViewController: UIViewController {
         //Dispose of any resources that can be recreated.
     }
     
-    func sendDirection(direction: Character) {
+    func sendDirection(_ direction: Character) {
         if let service = CentralManager.connectedService {
             service.writePosition(direction)
         }

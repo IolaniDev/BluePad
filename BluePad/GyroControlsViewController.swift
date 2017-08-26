@@ -19,15 +19,15 @@ class GyroControlsViewController: UIViewController {
     
     @IBOutlet weak var GoButton: UIButton!
     
-    var timer: NSTimer? = nil
+    var timer: Timer? = nil
     
-    func processMovement(x: Double, y: Double) {
+    func processMovement(_ x: Double, y: Double) {
         //Positive x = right tilt
         //Positive y = forward tile
         
         var toWrite = String()
         
-        if GoButton.state == .Highlighted {
+        if GoButton.state == .highlighted {
             toWrite = "CM,"
             toWrite += String(format: "%.1f", y)
             toWrite += ","
@@ -49,8 +49,8 @@ class GyroControlsViewController: UIViewController {
     
     func refreshVisuals() {
         if let peripheral = CentralManager.connectedPeripheral {
-            if peripheral.state == CBPeripheralState.Connected {
-                CurrentConnectionLabel.text = "Currently connected to: \(peripheral.name)"
+            if peripheral.state == CBPeripheralState.connected {
+                CurrentConnectionLabel.text = "Currently connected to: \(String(describing: peripheral.name))"
                 return
             }
         }
@@ -59,26 +59,26 @@ class GyroControlsViewController: UIViewController {
     
     func startTimer()
     {
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target: self, selector: #selector(GyroControlsViewController.refreshVisuals), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(GyroControlsViewController.refreshVisuals), userInfo: nil, repeats: true)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         motionManager.deviceMotionUpdateInterval = 0.05
-        motionManager.startDeviceMotionUpdatesToQueue(NSOperationQueue.mainQueue()) { (data: CMDeviceMotion?, error: NSError?) in
+        motionManager.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: { (data, error) in
             // Right turn is negative around y axis, forward is negative around x axis
             let tiltHorizontal = -1 * data!.attitude.pitch // Positive is right turn
             let tiltVertical   = -1 * data!.attitude.roll // Positive is forward
             self.processMovement(self.radiansToDegrees(tiltHorizontal), y: self.radiansToDegrees(tiltVertical))
-        }
+        })
         
         startTimer()
     }
     
-    override func viewDidDisappear(animated: Bool) {
+    override func viewDidDisappear(_ animated: Bool) {
         // Stop sending data and stop the refresh timer //
         motionManager.stopDeviceMotionUpdates()
         timer?.invalidate()
@@ -89,8 +89,8 @@ class GyroControlsViewController: UIViewController {
         //Dispose of any resources that can be recreated.
     }
     
-    func radiansToDegrees(radians : Double) -> Double {
-        return 180 * radians / M_PI
+    func radiansToDegrees(_ radians : Double) -> Double {
+        return 180 * radians / .pi
     }
     
 }

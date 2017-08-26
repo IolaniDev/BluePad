@@ -11,8 +11,8 @@ import CoreBluetooth
 
 class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var refreshTimer: NSTimer? = nil
-    var waitTimer: NSTimer? = nil //puts a delay on refresh actions to allow connection states to update
+    var refreshTimer: Timer? = nil
+    var waitTimer: Timer? = nil //puts a delay on refresh actions to allow connection states to update
     
     @IBOutlet weak var BLEDevicesTableView: UITableView!
     
@@ -22,32 +22,32 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     
     @IBOutlet weak var ConnectButton: UIButton!
     
-    @IBAction func ConnectButtonPressed(sender: AnyObject) {
+    @IBAction func ConnectButtonPressed(_ sender: AnyObject) {
         self.connectCurrentDevice()
         refreshVisuals()
         if let peripheral = CentralManager.connectedPeripheral {
-            CurrentConnectionLabel.text = "Currently connected to: \(peripheral.name)"
+            CurrentConnectionLabel.text = "Currently connected to: \(String(describing: peripheral.name))"
         }
 
     }
     
-    @IBAction func DisconnectButtonPressed(sender: AnyObject) {
+    @IBAction func DisconnectButtonPressed(_ sender: AnyObject) {
         CentralManager.disconnect()
         refreshWithWait()
     }
     
-    @IBAction func RefreshButtonPressed(sender: AnyObject) {
+    @IBAction func RefreshButtonPressed(_ sender: AnyObject) {
         refreshVisuals()
     }
     
     func startTimer()
     {
-        refreshTimer = NSTimer.scheduledTimerWithTimeInterval(20, target: self, selector: #selector(ConnectionsViewController.refreshVisuals), userInfo: nil, repeats: true)
+        refreshTimer = Timer.scheduledTimer(timeInterval: 20, target: self, selector: #selector(ConnectionsViewController.refreshVisuals), userInfo: nil, repeats: true)
     }
     
     func refreshWithWait()
     {
-        waitTimer = NSTimer.scheduledTimerWithTimeInterval(0.5, target: self, selector: #selector(ConnectionsViewController.refreshVisuals), userInfo: nil, repeats: false)
+        waitTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(ConnectionsViewController.refreshVisuals), userInfo: nil, repeats: false)
     }
     
     func refreshData()
@@ -60,8 +60,8 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     {
         BLEDevicesTableView.reloadData()
         if let peripheral = CentralManager.connectedPeripheral {
-            if peripheral.state == CBPeripheralState.Connected {
-                CurrentConnectionLabel.text = "Currently connected to: \(peripheral.name)"
+            if peripheral.state == CBPeripheralState.connected {
+                CurrentConnectionLabel.text = "Currently connected to: \(String(describing: peripheral.name))"
                 return
             }
         }
@@ -73,7 +73,7 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
         
         CentralManager.startScanning()
         
-        self.BLEDevicesTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.BLEDevicesTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         SelectedBLEDevice.adjustsFontSizeToFitWidth = true
         CurrentConnectionLabel.adjustsFontSizeToFitWidth = true
@@ -89,12 +89,12 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     // Table view functions //
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CentralManager.BLEPeripheralList.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell : UITableViewCell = self.BLEDevicesTableView.dequeueReusableCellWithIdentifier("cell")!
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell : UITableViewCell = self.BLEDevicesTableView.dequeueReusableCell(withIdentifier: "cell")!
         
         //cell.textLabel?.text = "\(CentralManager.BLEPeripheralList[indexPath.row].name) \(CentralManager.BLEPeripheralList[indexPath.row].RSSI)"
         
@@ -104,14 +104,14 @@ class ConnectionsViewController: UIViewController, UITableViewDelegate, UITableV
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         refreshVisuals()
         self.SelectedBLEDevice.text = CentralManager.BLEPeripheralList[indexPath.row].name
     }
     
     func connectCurrentDevice() {
         if (SelectedBLEDevice.text != "No device selected") {
-            CentralManager.connectToPeripheralWithName(SelectedBLEDevice.text!)
+            _ = CentralManager.connectToPeripheralWithName(SelectedBLEDevice.text!)
         }
     }
     

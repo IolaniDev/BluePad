@@ -13,7 +13,7 @@ let CentralManager = BLEManager();
 
 class BLEManager: NSObject, CBCentralManagerDelegate {
     
-    private var BLECentralManager : CBCentralManager?
+    fileprivate var BLECentralManager : CBCentralManager?
     
     var connectedPeripheral : CBPeripheral?
     
@@ -29,7 +29,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     
     override init() {
         super.init()
-        let centralQueue = dispatch_queue_create("com.raywenderlich", DISPATCH_QUEUE_SERIAL)
+        let centralQueue = DispatchQueue(label: "com.raywenderlich", attributes: [])
         BLECentralManager = CBCentralManager(delegate: self, queue: centralQueue, options: nil)
     }
     
@@ -47,7 +47,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     }
     
     func startScanning() {
-        BLECentralManager?.scanForPeripheralsWithServices([BLEServiceUUID], options: nil)
+        BLECentralManager?.scanForPeripherals(withServices: [BLEServiceUUID], options: nil)
     }
     
     func stopScanning() {
@@ -55,7 +55,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     }
     
     
-    func isPeripheralInList(peripheralInput: CBPeripheral) -> Bool {
+    func isPeripheralInList(_ peripheralInput: CBPeripheral) -> Bool {
         let peripheralName = peripheralInput.name
         
         for peripheral : CBPeripheral in BLEPeripheralList {
@@ -68,7 +68,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
     }
     
     // Returns whether or not it could successfully find the peripheral
-    func connectToPeripheralWithName(peripheralName: String) -> Bool {
+    func connectToPeripheralWithName(_ peripheralName: String) -> Bool {
         for peripheral : CBPeripheral in BLEPeripheralList {
             if (peripheral.name == peripheralName) {
                 self.connectToPeripheral(peripheral)
@@ -78,26 +78,26 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         return false
     }
     
-    func connectToPeripheral(peripheral: CBPeripheral) {
+    func connectToPeripheral(_ peripheral: CBPeripheral) {
         disconnect()
         connectedPeripheral = peripheral
-        BLECentralManager?.connectPeripheral(peripheral, options: nil)
+        BLECentralManager?.connect(peripheral, options: nil)
     }
     
     // Discovery //
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         
         //Checking if it's already connected is untested and experimental; may make stuff break!
-        if (!isPeripheralInList(peripheral) && peripheral.state != CBPeripheralState.Connected) {
+        if (!isPeripheralInList(peripheral) && peripheral.state != CBPeripheralState.connected) {
             BLEPeripheralList.append(peripheral)
-            print("Found a peripheral named \(peripheral.name)")
+            print("Found a peripheral named \(String(describing: peripheral.name))")
             //peripheral.readRSSI()
             //Apple's RSSI system doesn't work! D:
         }
     }
     
     // Connection //
-    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+    func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         
         //What do we do when we connect to a peripheral?
         stopScanning()
@@ -107,45 +107,42 @@ class BLEManager: NSObject, CBCentralManagerDelegate {
         }
     }
     
-    func centralManager(central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         //What do we do when we disconnect from a peripheral?
         reset()
         startScanning()
     }
     
-    func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
+    func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         //What do we do when we fail to connect to a peripheral?
     }
     
     // Central Manager states //
-    func centralManagerDidUpdateState(central: CBCentralManager) {
+    func centralManagerDidUpdateState(_ central: CBCentralManager) {
         //How do we handle various central manager states?
         if let manager = BLECentralManager {
             switch (manager.state) {
-                case CBCentralManagerState.PoweredOff:
+                case .poweredOff:
                     stopScanning()
                     reset()
                     break
             
-                case CBCentralManagerState.Unauthorized:
+                case .unauthorized:
                     break
             
-                case CBCentralManagerState.Unknown:
+                case .unknown:
                     break
             
-                case CBCentralManagerState.PoweredOn:
+                case .poweredOn:
                     startScanning()
                     break
             
-                case CBCentralManagerState.Resetting:
+                case .resetting:
                     stopScanning()
                     reset()
                     break
             
-                case CBCentralManagerState.Unsupported:
-                    break
-            
-                default:
+                case .unsupported:
                     break
             }
         }

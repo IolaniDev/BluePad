@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3F378A1B1AF45CFD001EBB9F /* GyroControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F378A1A1AF45CFD001EBB9F /* GyroControlsViewController.swift */; };
+		127608B81F51820600586AE9 /* GyroControlsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127608B71F51820600586AE9 /* GyroControlsViewController.swift */; };
+		127608BA1F51820E00586AE9 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127608B91F51820E00586AE9 /* BLEService.swift */; };
 		3F600FC91AEED12C0020DFD5 /* arrow_down.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F600FC51AEED12C0020DFD5 /* arrow_down.png */; };
 		3F600FCA1AEED12C0020DFD5 /* arrow_left.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F600FC61AEED12C0020DFD5 /* arrow_left.png */; };
 		3F600FCB1AEED12C0020DFD5 /* arrow_up.png in Resources */ = {isa = PBXBuildFile; fileRef = 3F600FC71AEED12C0020DFD5 /* arrow_up.png */; };
@@ -18,29 +19,18 @@
 		3F9F28BD1AE8A07F00FEB40D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3F9F28BB1AE8A07F00FEB40D /* Main.storyboard */; };
 		3F9F28BF1AE8A07F00FEB40D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F9F28BE1AE8A07F00FEB40D /* Images.xcassets */; };
 		3F9F28C21AE8A07F00FEB40D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9F28C01AE8A07F00FEB40D /* LaunchScreen.xib */; };
-		3F9F28CE1AE8A07F00FEB40D /* BluePadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9F28CD1AE8A07F00FEB40D /* BluePadTests.swift */; };
 		3FC9C9D61AF2DE5E00432704 /* arrow_down_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9C9D21AF2DE5E00432704 /* arrow_down_red.jpg */; };
 		3FC9C9D71AF2DE5E00432704 /* arrow_left_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9C9D31AF2DE5E00432704 /* arrow_left_red.jpg */; };
 		3FC9C9D81AF2DE5E00432704 /* arrow_right_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9C9D41AF2DE5E00432704 /* arrow_right_red.jpg */; };
 		3FC9C9D91AF2DE5E00432704 /* arrow_up_red.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FC9C9D51AF2DE5E00432704 /* arrow_up_red.jpg */; };
 		3FCB65A51AEF04700027CF3C /* AnalogStick.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FCB65A41AEF04700027CF3C /* AnalogStick.swift */; };
 		3FED68921AE8A3DC00937D21 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FED68911AE8A3DC00937D21 /* BLEManager.swift */; };
-		3FED68961AE9EDD800937D21 /* BLEService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FED68951AE9EDD800937D21 /* BLEService.swift */; };
 		454312851B10143900436D39 /* circle.png in Resources */ = {isa = PBXBuildFile; fileRef = 454312841B10143900436D39 /* circle.png */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		3F9F28C81AE8A07F00FEB40D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3F9F28A81AE8A07F00FEB40D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3F9F28AF1AE8A07F00FEB40D;
-			remoteInfo = BluePad;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		3F378A1A1AF45CFD001EBB9F /* GyroControlsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GyroControlsViewController.swift; path = ../GyroControlsViewController.swift; sourceTree = "<group>"; };
+		127608B71F51820600586AE9 /* GyroControlsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GyroControlsViewController.swift; sourceTree = "<group>"; };
+		127608B91F51820E00586AE9 /* BLEService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEService.swift; sourceTree = "<group>"; };
 		3F600FC51AEED12C0020DFD5 /* arrow_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_down.png; path = ../Assets/arrow_down.png; sourceTree = "<group>"; };
 		3F600FC61AEED12C0020DFD5 /* arrow_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_left.png; path = ../Assets/arrow_left.png; sourceTree = "<group>"; };
 		3F600FC71AEED12C0020DFD5 /* arrow_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_up.png; path = ../Assets/arrow_up.png; sourceTree = "<group>"; };
@@ -53,28 +43,17 @@
 		3F9F28BC1AE8A07F00FEB40D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3F9F28BE1AE8A07F00FEB40D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3F9F28C11AE8A07F00FEB40D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		3F9F28C71AE8A07F00FEB40D /* BluePadTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BluePadTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3F9F28CC1AE8A07F00FEB40D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3F9F28CD1AE8A07F00FEB40D /* BluePadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePadTests.swift; sourceTree = "<group>"; };
 		3FC9C9D21AF2DE5E00432704 /* arrow_down_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow_down_red.jpg; path = Assets/arrow_down_red.jpg; sourceTree = SOURCE_ROOT; };
 		3FC9C9D31AF2DE5E00432704 /* arrow_left_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow_left_red.jpg; path = Assets/arrow_left_red.jpg; sourceTree = SOURCE_ROOT; };
 		3FC9C9D41AF2DE5E00432704 /* arrow_right_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow_right_red.jpg; path = Assets/arrow_right_red.jpg; sourceTree = SOURCE_ROOT; };
 		3FC9C9D51AF2DE5E00432704 /* arrow_up_red.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = arrow_up_red.jpg; path = Assets/arrow_up_red.jpg; sourceTree = SOURCE_ROOT; };
-		3FCB65A41AEF04700027CF3C /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AnalogStick.swift; path = BluePad/AnalogStick.swift; sourceTree = "<group>"; };
+		3FCB65A41AEF04700027CF3C /* AnalogStick.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalogStick.swift; sourceTree = "<group>"; };
 		3FED68911AE8A3DC00937D21 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
-		3FED68951AE9EDD800937D21 /* BLEService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BLEService.swift; path = ../BLEService.swift; sourceTree = "<group>"; };
 		454312841B10143900436D39 /* circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3F9F28AD1AE8A07F00FEB40D /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3F9F28C41AE8A07F00FEB40D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -87,9 +66,7 @@
 		3F9F28A71AE8A07F00FEB40D = {
 			isa = PBXGroup;
 			children = (
-				3FCB65A41AEF04700027CF3C /* AnalogStick.swift */,
 				3F9F28B21AE8A07F00FEB40D /* BluePad */,
-				3F9F28CA1AE8A07F00FEB40D /* BluePadTests */,
 				3F9F28B11AE8A07F00FEB40D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -98,7 +75,6 @@
 			isa = PBXGroup;
 			children = (
 				3F9F28B01AE8A07F00FEB40D /* BluePad.app */,
-				3F9F28C71AE8A07F00FEB40D /* BluePadTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -111,11 +87,12 @@
 				3FC9C9D41AF2DE5E00432704 /* arrow_right_red.jpg */,
 				3FC9C9D51AF2DE5E00432704 /* arrow_up_red.jpg */,
 				3F9F28B51AE8A07F00FEB40D /* AppDelegate.swift */,
+				3FCB65A41AEF04700027CF3C /* AnalogStick.swift */,
 				3F9F28B71AE8A07F00FEB40D /* ConnectionsViewController.swift */,
+				127608B91F51820E00586AE9 /* BLEService.swift */,
 				3FED68911AE8A3DC00937D21 /* BLEManager.swift */,
-				3FED68951AE9EDD800937D21 /* BLEService.swift */,
+				127608B71F51820600586AE9 /* GyroControlsViewController.swift */,
 				3F9F28B91AE8A07F00FEB40D /* ArrowControlsViewController.swift */,
-				3F378A1A1AF45CFD001EBB9F /* GyroControlsViewController.swift */,
 				3F9F28BB1AE8A07F00FEB40D /* Main.storyboard */,
 				454312841B10143900436D39 /* circle.png */,
 				3F600FC51AEED12C0020DFD5 /* arrow_down.png */,
@@ -133,23 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				3F9F28B41AE8A07F00FEB40D /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		3F9F28CA1AE8A07F00FEB40D /* BluePadTests */ = {
-			isa = PBXGroup;
-			children = (
-				3F9F28CD1AE8A07F00FEB40D /* BluePadTests.swift */,
-				3F9F28CB1AE8A07F00FEB40D /* Supporting Files */,
-			);
-			path = BluePadTests;
-			sourceTree = "<group>";
-		};
-		3F9F28CB1AE8A07F00FEB40D /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				3F9F28CC1AE8A07F00FEB40D /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -174,24 +134,6 @@
 			productReference = 3F9F28B01AE8A07F00FEB40D /* BluePad.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3F9F28C61AE8A07F00FEB40D /* BluePadTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3F9F28D41AE8A07F00FEB40D /* Build configuration list for PBXNativeTarget "BluePadTests" */;
-			buildPhases = (
-				3F9F28C31AE8A07F00FEB40D /* Sources */,
-				3F9F28C41AE8A07F00FEB40D /* Frameworks */,
-				3F9F28C51AE8A07F00FEB40D /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3F9F28C91AE8A07F00FEB40D /* PBXTargetDependency */,
-			);
-			name = BluePadTests;
-			productName = BluePadTests;
-			productReference = 3F9F28C71AE8A07F00FEB40D /* BluePadTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,16 +141,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftMigration = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = Iolani;
 				TargetAttributes = {
 					3F9F28AF1AE8A07F00FEB40D = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = JP7JGNH77T;
-					};
-					3F9F28C61AE8A07F00FEB40D = {
-						CreatedOnToolsVersion = 6.3;
-						TestTargetID = 3F9F28AF1AE8A07F00FEB40D;
+						LastSwiftMigration = 0830;
 					};
 				};
 			};
@@ -226,7 +165,6 @@
 			projectRoot = "";
 			targets = (
 				3F9F28AF1AE8A07F00FEB40D /* BluePad */,
-				3F9F28C61AE8A07F00FEB40D /* BluePadTests */,
 			);
 		};
 /* End PBXProject section */
@@ -251,13 +189,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3F9F28C51AE8A07F00FEB40D /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -266,32 +197,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				3F9F28BA1AE8A07F00FEB40D /* ArrowControlsViewController.swift in Sources */,
-				3F378A1B1AF45CFD001EBB9F /* GyroControlsViewController.swift in Sources */,
-				3FED68961AE9EDD800937D21 /* BLEService.swift in Sources */,
+				127608B81F51820600586AE9 /* GyroControlsViewController.swift in Sources */,
 				3FED68921AE8A3DC00937D21 /* BLEManager.swift in Sources */,
 				3F9F28B61AE8A07F00FEB40D /* AppDelegate.swift in Sources */,
+				127608BA1F51820E00586AE9 /* BLEService.swift in Sources */,
 				3FCB65A51AEF04700027CF3C /* AnalogStick.swift in Sources */,
 				3F9F28B81AE8A07F00FEB40D /* ConnectionsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3F9F28C31AE8A07F00FEB40D /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F9F28CE1AE8A07F00FEB40D /* BluePadTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3F9F28C91AE8A07F00FEB40D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3F9F28AF1AE8A07F00FEB40D /* BluePad */;
-			targetProxy = 3F9F28C81AE8A07F00FEB40D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3F9F28BB1AE8A07F00FEB40D /* Main.storyboard */ = {
@@ -326,8 +241,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -372,8 +289,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -392,6 +311,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -408,6 +328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.iolani.inhouse.BluePad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -422,42 +343,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = org.iolani.inhouse.BluePad;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-			};
-			name = Release;
-		};
-		3F9F28D51AE8A07F00FEB40D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BluePadTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.iolani.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BluePad.app/BluePad";
-			};
-			name = Debug;
-		};
-		3F9F28D61AE8A07F00FEB40D /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = BluePadTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.iolani.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BluePad.app/BluePad";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -478,15 +364,6 @@
 			buildConfigurations = (
 				3F9F28D21AE8A07F00FEB40D /* Debug */,
 				3F9F28D31AE8A07F00FEB40D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3F9F28D41AE8A07F00FEB40D /* Build configuration list for PBXNativeTarget "BluePadTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3F9F28D51AE8A07F00FEB40D /* Debug */,
-				3F9F28D61AE8A07F00FEB40D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

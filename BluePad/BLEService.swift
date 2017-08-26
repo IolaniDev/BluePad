@@ -36,7 +36,7 @@ class BLEService: NSObject, CBPeripheralDelegate {
         self.BLEPeripheral?.discoverServices([BLEServiceUUID])
     }
     
-    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
         let uuidsForBTService: [CBUUID] = [PositionCharUUID]
         
         if (peripheral != self.BLEPeripheral) {
@@ -54,13 +54,13 @@ class BLEService: NSObject, CBPeripheralDelegate {
         }
         
         for service in peripheral.services! {
-            if service.UUID == BLEServiceUUID {
-                peripheral.discoverCharacteristics(uuidsForBTService, forService: service )
+            if service.uuid == BLEServiceUUID {
+                peripheral.discoverCharacteristics(uuidsForBTService, for: service )
             }
         }
     }
     
-    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
         if (peripheral != self.BLEPeripheral) {
             // Wrong Peripheral
             return
@@ -71,9 +71,9 @@ class BLEService: NSObject, CBPeripheralDelegate {
         }
         
         for characteristic in service.characteristics! {
-            if characteristic.UUID == PositionCharUUID {
+            if characteristic.uuid == PositionCharUUID {
                 self.positionCharacteristic = (characteristic)
-                peripheral.setNotifyValue(true, forCharacteristic: characteristic)
+                peripheral.setNotifyValue(true, for: characteristic)
                 
                 // Send notification that Bluetooth is connected and all required characteristics are discovered
                 self.sendBTServiceNotificationWithIsBluetoothConnected(true)
@@ -83,7 +83,7 @@ class BLEService: NSObject, CBPeripheralDelegate {
     
     // Mark: - Private
     
-    func writePosition(position: Character) {
+    func writePosition(_ position: Character) {
         // See if characteristic has been discovered before writing to it
         if self.positionCharacteristic == nil {
             return
@@ -91,11 +91,11 @@ class BLEService: NSObject, CBPeripheralDelegate {
         
         // Need a mutable var to pass to writeValue function
         var positionValue = position
-        let data = NSData(bytes: &positionValue, length: sizeof(UInt8))
-        self.BLEPeripheral?.writeValue(data, forCharacteristic: self.positionCharacteristic!, type: CBCharacteristicWriteType.WithoutResponse)
+        let data = Data(bytes: &positionValue, count: MemoryLayout<UInt8>.size)
+        self.BLEPeripheral?.writeValue(data, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
     }
     
-    func writeGyro(gyroString: String) {
+    func writeGyro(_ gyroString: String) {
         // See if characteristic has been discovered before writing to it
         if self.positionCharacteristic == nil {
             return
@@ -103,13 +103,13 @@ class BLEService: NSObject, CBPeripheralDelegate {
         
         // Need a mutable var to pass to writeValue function
         _ = gyroString
-        let data = gyroString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-        self.BLEPeripheral?.writeValue(data!, forCharacteristic: self.positionCharacteristic!, type: CBCharacteristicWriteType.WithoutResponse)
+        let data = gyroString.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        self.BLEPeripheral?.writeValue(data!, for: self.positionCharacteristic!, type: CBCharacteristicWriteType.withoutResponse)
     }
     
-    func sendBTServiceNotificationWithIsBluetoothConnected(isBluetoothConnected: Bool) {
+    func sendBTServiceNotificationWithIsBluetoothConnected(_ isBluetoothConnected: Bool) {
         let connectionDetails = ["isConnected": isBluetoothConnected]
-        NSNotificationCenter.defaultCenter().postNotificationName(BLEServiceChangedStatusNotification, object: self, userInfo: connectionDetails)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: BLEServiceChangedStatusNotification), object: self, userInfo: connectionDetails)
     }
     
 }
